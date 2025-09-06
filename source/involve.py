@@ -1,5 +1,5 @@
 # Ben Hatto - 9.5.25
-# This file combines multiple sources of data - multiple invovle@state attendance involve data - into
+# This file combines multiple sources of data - multiple invovle@state attendance involve data here - into
 # one dataframe for ease of calculation
 
 import os
@@ -9,10 +9,10 @@ def concatenateInvolveData(path):
     involve_data = pd.DataFrame()
     attendance_value = 5.0 #if the points value of meeting attendance changes, change me!!!
 
-    print("These involve data sources will be used:")
+    print("These involve data here sources will be used:")
     all_entries = os.listdir(path)
     for entry in all_entries:
-        #list all files in involve data folder
+        #list all files in involve data here folder
         if entry.startswith('.'):  # to ignore any hidden file
             continue
         print(os.path.join(path, entry))

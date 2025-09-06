@@ -24,13 +24,13 @@ def concatenateEventsData(path):
     events_data = pd.DataFrame()
     attendance_value = 10 #per hr - if the points value of event changes, change me!!!
 
-    print("These events data sources will be used:")
+    print("These events data here sources will be used:")
     all_entries = os.listdir(path)
     for entry in all_entries:
         if entry.startswith('.'):  # to ignore any hidden file
             continue
 
-        # list all files in events data folder
+        # list all files in events data here folder
         print(os.path.join(path, entry))
 
         #read as dataframe
