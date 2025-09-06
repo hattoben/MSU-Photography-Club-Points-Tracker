@@ -9,7 +9,7 @@ def concatenateInvolveData(path):
     involve_data = pd.DataFrame()
     attendance_value = 5.0 #if the points value of meeting attendance changes, change me!!!
 
-    print("These involve data here sources will be used:")
+    print("These involve data sources will be used:")
     all_entries = os.listdir(path)
     for entry in all_entries:
         #list all files in involve data here folder
