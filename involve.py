@@ -7,12 +7,14 @@ import pandas as pd
 
 def concatenateInvolveData(path):
     involve_data = pd.DataFrame()
-    attendance_value = 5
+    attendance_value = 5.0 #if the points value of meeting attendance changes, change me!!!
 
-    print("These involve data will be used:")
+    print("These involve data sources will be used:")
     all_entries = os.listdir(path)
     for entry in all_entries:
-        #import list all csv involve data
+        #list all csv involve data
+        if entry.startswith('.'):  # to ignore any hidden file
+            continue
         print(os.path.join(path, entry))
 
         #read as dataframe
@@ -25,15 +27,16 @@ def concatenateInvolveData(path):
     # remove "@msu.edu" from netid column
     involve_data["NetID"] = involve_data["NetID"].str[:-8]
 
-    df_unique = (
+    count_attendance = (
         involve_data.groupby(["First Name", "Last Name", "NetID"])
         .size()  # count rows in each group
         .reset_index(name="Attendance")  # turn into a column
     )
 
     # multiply by 5 to get points, then add points column
-    df_unique["Points"] = df_unique["Attendance"] * attendance_value
+    count_attendance["Points"] = count_attendance["Attendance"] * attendance_value
 
     # Sort by highest count
-    involve_data = df_unique.sort_values(by="Attendance", ascending=False).reset_index(drop=True)
+    involve_data = count_attendance.sort_values(by="Attendance", ascending=False).reset_index(drop=True)
+
     return involve_data
