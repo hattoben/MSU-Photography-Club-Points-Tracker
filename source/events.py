@@ -41,6 +41,9 @@ def concatenateEventsData(path):
 
         events_data = pd.concat([events_data, df])
 
+    # remove "@msu.edu" from netid column
+    #involve_data["NetID"] = involve_data["NetID"].str[:-8]
+
     # Ensure Hours is numeric (handles "2 hours", "1.5", etc.)
     events_data["Hours"] = (
         events_data["Hours"].astype(str).str.extract(r"(\d+\.?\d*)")[0]

@@ -1,12 +1,15 @@
 from involve import concatenateInvolveData
 from events import concatenateEventsData
+from other import concatenateOtherData
 import pandas as pd
 
 involve_data = concatenateInvolveData("../involve data here")
 events_data = concatenateEventsData("../events data here")
+other_data = concatenateOtherData("../other data here")
+data = pd.concat([involve_data, events_data, other_data])
 
-data = pd.concat([involve_data, events_data])
 unique_names = dict()
+
 for row in data.itertuples():
     if row[1] not in unique_names:
         unique_names[row[1]] = [row[1], row[2], row[5]]
